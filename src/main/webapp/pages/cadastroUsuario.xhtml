@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/resources/template/template.xhtml">
+
+	<ui:define name="title">
+		Cadastrar Usuário
+	</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h:form>
+			<p:fieldset legend="Cadastrar Usuário">
+
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Nome:" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.nome}" />
+
+					<h:outputText value="E-mail:" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.email}" />
+
+					<h:outputText value="Telefone:" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.telefone}" />
+
+					<h:outputText value="Data Nascimento:" />
+					<p:calendar value="#{cadastroUsuarioMBean.usuario.dataNascimento}" pattern="dd/MM/yyyy"
+						showOn="button" yearRange="-50:+1" navigator="true" />
+
+				</h:panelGrid>
+
+				<br />	
+
+				<p:commandButton value="Salvar"
+					action="#{cadastroUsuarioMBean.atualizar()}"
+					update="@form, :messages" />
+				<p:commandButton value="Limpar"
+					action="#{cadastroUsuarioMBean.limpar()}"
+					update="@form" />
+				<p:commandButton value="Voltar"
+					action="#{cadastroUsuarioMBean.voltar()}" update="@form" />
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

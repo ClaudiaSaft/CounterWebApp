@@ -1,0 +1,18 @@
+Fazer:
+-CRUD
+
+
+Fazer e criar passo-a-passo:
+
+-Adicionar internacionalização.
+-Gravar na base uma imagem.
+-Gerar relatórios PDF, csv e word
+-Enviar e-mail
+-criar componente
+
+
+-COLOCAR PROJETO NO GIT.
+
+-Testes unitarios e selenium
+
+http://www.devmedia.com.br/curso/curso-de-java-ee-construa-uma-aplicacao-completa-java-ee/403	

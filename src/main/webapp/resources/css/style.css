@@ -1,0 +1,9 @@
+.si-icon-16x16 {
+	width: 16px;
+	height: 16px;
+	background-image: url('./img/edit.png');
+	background-repeat: no-repeat;
+	display: block;
+	overflow: hidden;
+	text-indent: -99999px;
+}
