@@ -24,18 +24,18 @@ public class UsuarioService {
 	}
 
 	public void atualizar(Usuario usuario) {
-		usuario.setDataCadastro(new Date());
+//		usuario.setDataCadastro(new Date());
 		if (usuario.getCodigo() == null) {
 			this.usuarioRepository.save(usuario);
-			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuário salvo com sucesso!"));
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuï¿½rio salvo com sucesso!"));
 		}else {
 			this.usuarioRepository.update(usuario);
-			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuário atualizado com sucesso!"));
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuï¿½rio atualizado com sucesso!"));
 		}
 	}
 
 	public void excluir(Usuario usuario) {
 		this.usuarioRepository.excluir(usuario);
-		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuário excluído com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuï¿½rio excluï¿½do com sucesso!"));
 	}
 }

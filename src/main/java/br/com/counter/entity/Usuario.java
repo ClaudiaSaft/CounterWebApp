@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="USUARIO")
-public class Usuario implements Serializable{
+@EntityListeners(value = LogListener.class)
+public class Usuario implements Audit, Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -83,5 +85,10 @@ public class Usuario implements Serializable{
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+//	@PrePersist
+//	public void changeDate(){
+//		this.dataCadastro = new Date();
+//	}
 	
 }

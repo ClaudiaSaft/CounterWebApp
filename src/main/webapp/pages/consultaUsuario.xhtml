@@ -15,7 +15,7 @@
 	<ui:define name="conteudo">
 	
 		<h:form>
-			<p:fieldset legend="Consulta Usuário">
+			<p:fieldset legend="Consulta Usuário" style="margin-top:20px;">
 
 				<h:panelGrid columns="2">
 
@@ -52,6 +52,11 @@
 					</p:column>
 					<p:column headerText="Data de Nascimento">
 						<h:outputText value="#{usuario.dataNascimento}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Data de Cadastro">
+						<h:outputText value="#{usuario.dataCadastro}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
