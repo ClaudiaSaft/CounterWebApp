@@ -6,16 +6,18 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Null;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import br.com.counter.enumeration.SexoEnum;
 import br.com.counter.validators.Cep;
 
 @Entity
@@ -26,81 +28,91 @@ public class Usuario implements Audit, Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="CODIGO")
+	@Column(name="ID_USUARIO")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long codigo;
+	private Long idUsuario;
 	
 	@NotEmpty(message = "Nome é obrigatório")
-	@Length(max = 45)
-	@Column(name="NOME")
-	private String nome;
-	
-	@NotEmpty(message = "E-mail é obrigatório")
-	@Email
-	@Length(max = 45)
-	@Column(name="EMAIL")
-	private String email;
-	
-	@Column(name="TELEFONE")
-	@Length(max = 45)
-	private String telefone;
-	
-	@Column(name="DT_CADASTRO")
-	private Date dataCadastro;
-	
-	@Column(name="DT_NASCIMENTO")
-	private Date dataNascimento;
+	@Length(max = 40)
+	@Column(name="DS_NOME")
+	private String dsNome;
+
+	@Length(max = 40)
+	@Column(name="DS_ENDERECO")
+	private String dsEndereco;
+
+	@Length(max = 40)
+	@Column(name="DS_CIDADE")
+	private String dsCidade;
 	
 	@Cep
 	@Column(name="NR_CEP")
 	private String cep;
+	
+	@Length(max = 40)
+	@Column(name="DS_UF")
+	private String dsUf;
 
-	public Long getCodigo() {
-		return codigo;
+	@Length(max = 20)
+	@Column(name="NR_TELEFONE")
+	private Long nrTelefone;
+
+	@Column(name="DT_NASCIMENTO")
+	private String dtNascimento;
+	
+	@Length(max = 20)
+	@Column(name="NR_RG")
+	private Long nrRg;
+	
+	@Length(max = 20)
+	@Column(name="NR_CPF")
+	private Long nrCpf;
+	
+	@Email
+	@Length(max = 40)
+	@Column(name="DS_EMAIL")
+	private String dsEmail;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="TP_SEXO")
+	private SexoEnum sexo;
+	
+	//MAPEAR DEPOIS
+	private Usuario usuarioDependente;
+	
+	@Column(name="DT_CADASTRO")
+	private Date dataCadastro;
+
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDsNome() {
+		return dsNome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDsNome(String dsNome) {
+		this.dsNome = dsNome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getDsEndereco() {
+		return dsEndereco;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDsEndereco(String dsEndereco) {
+		this.dsEndereco = dsEndereco;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getDsCidade() {
+		return dsCidade;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public Date getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDsCidade(String dsCidade) {
+		this.dsCidade = dsCidade;
 	}
 
 	public String getCep() {
@@ -111,10 +123,81 @@ public class Usuario implements Audit, Serializable{
 		this.cep = cep;
 	}
 
+	public String getDsUf() {
+		return dsUf;
+	}
+
+	public void setDsUf(String dsUf) {
+		this.dsUf = dsUf;
+	}
+
+	public Long getNrTelefone() {
+		return nrTelefone;
+	}
+
+	public void setNrTelefone(Long nrTelefone) {
+		this.nrTelefone = nrTelefone;
+	}
+
+	public String getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(String dtNascimento) {
+		this.dtNascimento = dtNascimento;
+	}
+
+	public Long getNrRg() {
+		return nrRg;
+	}
+
+	public void setNrRg(Long nrRg) {
+		this.nrRg = nrRg;
+	}
+
+	public Long getNrCpf() {
+		return nrCpf;
+	}
+
+	public void setNrCpf(Long nrCpf) {
+		this.nrCpf = nrCpf;
+	}
+
+	public String getDsEmail() {
+		return dsEmail;
+	}
+
+	public void setDsEmail(String dsEmail) {
+		this.dsEmail = dsEmail;
+	}
+
+	public SexoEnum getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(SexoEnum sexo) {
+		this.sexo = sexo;
+	}
+
+	public Usuario getUsuarioDependente() {
+		return usuarioDependente;
+	}
+
+	public void setUsuarioDependente(Usuario usuarioDependente) {
+		this.usuarioDependente = usuarioDependente;
+	}
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
 //	@PrePersist
 //	public void changeDate(){
 //		this.dataCadastro = new Date();
 //	}
-	
 	
 }

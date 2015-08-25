@@ -48,7 +48,7 @@ public class UsuarioRepository {
 	}
 
 	public void excluir(Usuario usuario) {
-		Usuario usuarioExcluir = this.manager.find(Usuario.class, usuario.getCodigo());
+		Usuario usuarioExcluir = this.manager.find(Usuario.class, usuario.getIdUsuario());
 		this.manager.remove(usuarioExcluir);
 	}
 

@@ -24,7 +24,7 @@ public class UsuarioService {
 	}
 
 	public void atualizar(Usuario usuario) {
-		if (usuario.getCodigo() == null) {
+		if (usuario.getIdUsuario() == null) {
 			this.usuarioRepository.save(usuario);
 			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuario salvo com sucesso!"));
 		}else {

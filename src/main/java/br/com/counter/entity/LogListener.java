@@ -11,7 +11,6 @@ public class LogListener implements Serializable{
 
 	@PrePersist
 	public void changeDate(Audit audit){
-		System.out.println("PRE PERSIST: ");
 		audit.setDataCadastro(new Date());
 	}
 }
