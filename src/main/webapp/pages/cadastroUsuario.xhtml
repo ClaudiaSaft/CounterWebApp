@@ -20,19 +20,19 @@
 				<h:panelGrid columns="2">
 
 					<h:outputText value="Nome:" />
-					<p:inputText value="#{cadastroUsuarioMBean.usuario.nome}" label="Nome" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.dsNome}" label="Nome" />
 
 					<h:outputText value="E-mail:" />
-					<p:inputText value="#{cadastroUsuarioMBean.usuario.email}" label="E-mail"/>
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.dsEmail}" label="E-mail"/>
 
 					<h:outputText value="Telefone:" />
-					<p:inputText value="#{cadastroUsuarioMBean.usuario.telefone}" label="Telefone"/>
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.nrTelefone}" label="Telefone"/>
 
 					<h:outputText value="CEP:" />
 					<p:inputText value="#{cadastroUsuarioMBean.usuario.cep}" label="Cep"/>
 
 					<h:outputText value="Data de Nascimento:" />
-					<p:calendar value="#{cadastroUsuarioMBean.usuario.dataNascimento}" pattern="dd/MM/yyyy"
+					<p:calendar value="#{cadastroUsuarioMBean.usuario.dtNascimento}" pattern="dd/MM/yyyy"
 						showOn="button" yearRange="-50:+1" navigator="true" label="Data de Nascimento" />
 
 				</h:panelGrid>
