@@ -10,6 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.counter.validators.Cep;
 
 @Entity
 @Table(name="USUARIO")
@@ -23,13 +30,19 @@ public class Usuario implements Audit, Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@NotEmpty(message = "Nome é obrigatório")
+	@Length(max = 45)
 	@Column(name="NOME")
 	private String nome;
 	
+	@NotEmpty(message = "E-mail é obrigatório")
+	@Email
+	@Length(max = 45)
 	@Column(name="EMAIL")
 	private String email;
 	
 	@Column(name="TELEFONE")
+	@Length(max = 45)
 	private String telefone;
 	
 	@Column(name="DT_CADASTRO")
@@ -37,6 +50,10 @@ public class Usuario implements Audit, Serializable{
 	
 	@Column(name="DT_NASCIMENTO")
 	private Date dataNascimento;
+	
+	@Cep
+	@Column(name="NR_CEP")
+	private String cep;
 
 	public Long getCodigo() {
 		return codigo;
@@ -86,9 +103,18 @@ public class Usuario implements Audit, Serializable{
 		this.dataNascimento = dataNascimento;
 	}
 
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
 //	@PrePersist
 //	public void changeDate(){
 //		this.dataCadastro = new Date();
 //	}
+	
 	
 }

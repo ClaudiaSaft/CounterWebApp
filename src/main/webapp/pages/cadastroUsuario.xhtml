@@ -20,17 +20,20 @@
 				<h:panelGrid columns="2">
 
 					<h:outputText value="Nome:" />
-					<p:inputText value="#{cadastroUsuarioMBean.usuario.nome}" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.nome}" label="Nome" />
 
 					<h:outputText value="E-mail:" />
-					<p:inputText value="#{cadastroUsuarioMBean.usuario.email}" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.email}" label="E-mail"/>
 
 					<h:outputText value="Telefone:" />
-					<p:inputText value="#{cadastroUsuarioMBean.usuario.telefone}" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.telefone}" label="Telefone"/>
 
-					<h:outputText value="Data Nascimento:" />
+					<h:outputText value="CEP:" />
+					<p:inputText value="#{cadastroUsuarioMBean.usuario.cep}" label="Cep"/>
+
+					<h:outputText value="Data de Nascimento:" />
 					<p:calendar value="#{cadastroUsuarioMBean.usuario.dataNascimento}" pattern="dd/MM/yyyy"
-						showOn="button" yearRange="-50:+1" navigator="true" />
+						showOn="button" yearRange="-50:+1" navigator="true" label="Data de Nascimento" />
 
 				</h:panelGrid>
 
@@ -41,9 +44,9 @@
 					update="@form, :messages" />
 				<p:commandButton value="Limpar"
 					action="#{cadastroUsuarioMBean.limpar()}"
-					update="@form" />
+					update="@form" immediate="true"/>
 				<p:commandButton value="Voltar"
-					action="#{cadastroUsuarioMBean.voltar()}" update="@form" />
+					action="#{cadastroUsuarioMBean.voltar()}" update="@form" immediate="true"/>
 			</p:fieldset>
 		</h:form>
 	</ui:define>

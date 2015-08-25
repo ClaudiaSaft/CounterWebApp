@@ -13,6 +13,7 @@ import javax.faces.context.Flash;
 import br.com.counter.entity.Usuario;
 import br.com.counter.enumeration.Pages;
 import br.com.counter.service.UsuarioService;
+import br.com.counter.vo.ConsultaUsuarioVO;
 
 /**
  * @author CLAUDIA
@@ -27,13 +28,13 @@ public class ConsultaUsuarioMBean implements Serializable{
 	@EJB
 	private UsuarioService usuarioService; 
 	
-	private Usuario usuarioFiltro;
+	private ConsultaUsuarioVO usuarioFiltro;
 	private Usuario usuario;
 	private List<Usuario> usuarios;
 	
 	@PostConstruct
 	public void init(){
-		usuarioFiltro = new Usuario();
+		usuarioFiltro = new ConsultaUsuarioVO();
 		usuario = new Usuario();
 	}
 
@@ -74,11 +75,11 @@ public class ConsultaUsuarioMBean implements Serializable{
 		this.usuarios = usuarios;
 	}
 
-	public Usuario getUsuarioFiltro() {
+	public ConsultaUsuarioVO getUsuarioFiltro() {
 		return usuarioFiltro;
 	}
 
-	public void setUsuarioFiltro(Usuario usuarioFiltro) {
+	public void setUsuarioFiltro(ConsultaUsuarioVO usuarioFiltro) {
 		this.usuarioFiltro = usuarioFiltro;
 	}
 	

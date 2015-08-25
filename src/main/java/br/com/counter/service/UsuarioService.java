@@ -1,6 +1,5 @@
 package br.com.counter.service;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -11,6 +10,7 @@ import javax.inject.Inject;
 
 import br.com.counter.entity.Usuario;
 import br.com.counter.repository.UsuarioRepository;
+import br.com.counter.vo.ConsultaUsuarioVO;
 
 @Stateless
 @LocalBean
@@ -19,23 +19,22 @@ public class UsuarioService {
 	@Inject
 	private UsuarioRepository usuarioRepository;
 	
-	public List<Usuario> getUsuarios(Usuario usuario) {
-		return this.usuarioRepository.getUsuarios(usuario);
+	public List<Usuario> getUsuarios(ConsultaUsuarioVO usuarioFiltro) {
+		return this.usuarioRepository.getUsuarios(usuarioFiltro);
 	}
 
 	public void atualizar(Usuario usuario) {
-//		usuario.setDataCadastro(new Date());
 		if (usuario.getCodigo() == null) {
 			this.usuarioRepository.save(usuario);
-			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usu�rio salvo com sucesso!"));
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuario salvo com sucesso!"));
 		}else {
 			this.usuarioRepository.update(usuario);
-			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usu�rio atualizado com sucesso!"));
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuario atualizado com sucesso!"));
 		}
 	}
 
 	public void excluir(Usuario usuario) {
 		this.usuarioRepository.excluir(usuario);
-		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usu�rio exclu�do com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage("", new FacesMessage(null, "Usuario excluido com sucesso!"));
 	}
 }

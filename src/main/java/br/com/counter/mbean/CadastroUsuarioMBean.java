@@ -52,7 +52,7 @@ public class CadastroUsuarioMBean implements Serializable{
 	public String voltar(){
 		return Pages.CONSULTA_USUARIO.getValue();
 	}
-
+	
 	//GETTERS AND SETTERS
 	public Usuario getUsuario() {
 		return usuario;

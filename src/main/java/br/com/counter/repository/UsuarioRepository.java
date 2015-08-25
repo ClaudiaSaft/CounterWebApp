@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import br.com.counter.entity.Usuario;
+import br.com.counter.vo.ConsultaUsuarioVO;
 
 @Named
 public class UsuarioRepository {
@@ -20,23 +21,23 @@ public class UsuarioRepository {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Usuario> getUsuarios(Usuario usuario) {
+	public List<Usuario> getUsuarios(ConsultaUsuarioVO usuarioFiltro) {
 		StringBuilder sql = new StringBuilder("SELECT u FROM Usuario u WHERE 1=1 ");
 		
-		if (usuario.getNome() != null && !usuario.getNome().equals("")) {
+		if (usuarioFiltro.getNome() != null && !usuarioFiltro.getNome().equals("")) {
 			sql.append(" AND UPPER(u.nome) like :nome");
 		}
-		if (usuario.getDataNascimento() != null) {
+		if (usuarioFiltro.getDataNascimento() != null) {
 			sql.append(" AND u.dataNascimento = :dataNascimento");
 		}
 		
 		Query query = manager.createQuery(sql.toString());
 		
-		if (usuario.getNome() != null && !usuario.getNome().equals("")) {
-			query.setParameter("nome", "%" + usuario.getNome().toUpperCase() + "%");
+		if (usuarioFiltro.getNome() != null && !usuarioFiltro.getNome().equals("")) {
+			query.setParameter("nome", "%" + usuarioFiltro.getNome().toUpperCase() + "%");
 		}
-		if (usuario.getDataNascimento() != null) {
-			query.setParameter("dataNascimento", usuario.getDataNascimento());
+		if (usuarioFiltro.getDataNascimento() != null) {
+			query.setParameter("dataNascimento", usuarioFiltro.getDataNascimento());
 		}
 		
 		return query.getResultList();
