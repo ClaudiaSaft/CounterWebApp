@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -53,18 +54,15 @@ public class Usuario implements Audit, Serializable{
 	@Column(name="DS_UF")
 	private String dsUf;
 
-	@Length(max = 20)
 	@Column(name="NR_TELEFONE")
 	private Long nrTelefone;
 
 	@Column(name="DT_NASCIMENTO")
 	private String dtNascimento;
 	
-	@Length(max = 20)
 	@Column(name="NR_RG")
 	private Long nrRg;
 	
-	@Length(max = 20)
 	@Column(name="NR_CPF")
 	private Long nrCpf;
 	
@@ -78,6 +76,7 @@ public class Usuario implements Audit, Serializable{
 	private SexoEnum sexo;
 	
 	//MAPEAR DEPOIS
+	@Transient
 	private Usuario usuarioDependente;
 	
 	@Column(name="DT_CADASTRO")
