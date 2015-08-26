@@ -21,4 +21,6 @@ public @interface Cep {
 	Class<?>[] groups() default { };
 	Class<? extends Payload>[] payload() default { };
 
+	//SE NAO COLOCAR DEFAULT, O VALOR VAI SER OBRIGATORIO
+	String value() default "";
 }
